@@ -25,9 +25,9 @@ function findHairColor(name, array) {
     let numberOfSteps = 1,
         startTime = performance.now();
     while (array.length !== 1) {
-        let bounadaryName = array[Math.ceil((array.length / 2))].name;
-        if (bounadaryName < name) {
-            if (bounadaryName === name) {
+        let boundaryName = array[Math.ceil((array.length / 2))].name;
+        if (boundaryName < name) {
+            if (boundaryName === name) {
                 console.log(performance.now() - startTime + ' milliseconds');
                 return {numberOfSteps: numberOfSteps, hairColor: array[Math.ceil((array.length / 2))].hairColor};
             } else {
@@ -35,7 +35,7 @@ function findHairColor(name, array) {
                 numberOfSteps++;
             }
         } else {
-            if (bounadaryName === name) {
+            if (boundaryName === name) {
                 console.log(performance.now() - startTime + ' milliseconds');
                 return {numberOfSteps: numberOfSteps, hairColor: array[Math.ceil((array.length / 2))].hairColor};
             } else {
