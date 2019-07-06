@@ -1,24 +1,29 @@
-window.onload = function () {
-    let nextName;
-    document.getElementById("binary-search").addEventListener("click", getDataAndFindColorForPerson);
-};
-
-function getDataAndFindColorForPerson(nextName) {
-    let namesAndHairColor = [],
-        hair1 = document.getElementById("hair1"),
-        hair2 = document.getElementById("hair2");
-    fetch("mock-data.json")
+window.onload = async function () {
+    let jsonData, nextName;
+    await fetch("mock-data.json")
         .then(response => response.json())
         .then(json => {
-            namesAndHairColor = json.sort((a, b) => (a.name > b.name) ? 1 : (b.name > a.name) ? -1 : 0);
-            let result = findHairColor(findRandomName(namesAndHairColor), namesAndHairColor);
-            hair1.style.fill = result.hairColor;
-            hair2.style.fill = result.hairColor;
+            jsonData = json;
         });
+    nextName = findRandomName(jsonData);
+    document.getElementById("binary-search").addEventListener("click", function () {
+        getDataAndFindColorForPerson(jsonData, nextName);
+        nextName = findRandomName(jsonData);
+    });
+};
+
+function getDataAndFindColorForPerson(jsonData, nextName) {
+    let result,
+        hair1 = document.getElementById("hair1"),
+        hair2 = document.getElementById("hair2"),
+        namesAndHairColor = jsonData.sort((a, b) => (a.name > b.name) ? 1 : (b.name > a.name) ? -1 : 0);
+    result = findHairColor(nextName, namesAndHairColor);
+    hair1.style.fill = result.hairColor;
+    hair2.style.fill = result.hairColor;
 }
 
-function findRandomName(array) {
-    return array[Math.floor(Math.random() * array.length)].name;
+function findRandomName(jsonData) {
+    return jsonData[Math.floor(Math.random() * jsonData.length)].name;
 }
 
 function findHairColor(name, array) {
@@ -45,4 +50,3 @@ function findHairColor(name, array) {
         }
     }
 }
-
