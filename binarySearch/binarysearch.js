@@ -6,9 +6,15 @@ window.onload = async function () {
             jsonData = json;
         });
     nextName = findRandomName(jsonData);
+    document.getElementById("person-to-find").innerHTML = nextName;
     document.getElementById("binary-search").addEventListener("click", function () {
         getDataAndFindColorForPerson(jsonData, nextName);
         nextName = findRandomName(jsonData);
+        document.getElementById("person-to-find").innerHTML = nextName;
+    });
+    document.getElementById("change-person").addEventListener("click", function () {
+        nextName = findRandomName(jsonData);
+        document.getElementById("person-to-find").innerHTML = nextName;
     });
 };
 
@@ -17,6 +23,7 @@ function getDataAndFindColorForPerson(jsonData, nextName) {
         hair1 = document.getElementById("hair1"),
         hair2 = document.getElementById("hair2"),
         namesAndHairColor = jsonData.sort((a, b) => (a.name > b.name) ? 1 : (b.name > a.name) ? -1 : 0);
+    document.getElementById("person-found").innerHTML = nextName;
     result = findHairColor(nextName, namesAndHairColor);
     hair1.style.fill = result.hairColor;
     hair2.style.fill = result.hairColor;
