@@ -25,6 +25,7 @@ function getDataAndFindColorForPerson(jsonData, nextName) {
         namesAndHairColor = jsonData.sort((a, b) => (a.name > b.name) ? 1 : (b.name > a.name) ? -1 : 0);
     document.getElementById("person-found").innerHTML = nextName;
     result = findHairColor(nextName, namesAndHairColor);
+    document.getElementById("number-of-steps").innerHTML = "Found in " + result.numberOfSteps + " steps.";
     hair1.style.fill = result.hairColor;
     hair2.style.fill = result.hairColor;
 }

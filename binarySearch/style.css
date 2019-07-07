@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
+.container {
+    width: 70vw;
+    display: grid;
+    grid-template-columns: [first-column] 1fr [second-column] 1fr;
+    grid-template-rows: repeat(5, 80px);
+    font-family: 'Abel', sans-serif;
+}
+
+.person,.person-name {
+    grid-column: 1;
+    text-align: center;
+}
+
+.person-name {
+    grid-row: 5;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.buttons, .name-of-person, .name-of-person-to-find {
+    grid-column: 2;
+}
+
+.name-of-person-to-find {
+    grid-row: 1;
+    font-size: 18px;
+}
+
+.buttons {
+    grid-row: 4;
+}
+
+#person-to-find {
+    font-weight: bold;
+}
+#number-of-steps {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 20px;
+}
+
+button {
+    background-color: #217baf;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
